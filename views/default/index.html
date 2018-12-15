@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{=URL('static','css/bootstrap.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{=URL('static','css/main.css')}}">
+    <!--[if lt IE 9]>-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!--[endif]-->
+  </head>
+  <body class="background-picture">
+    
+      <!-- <img src="{{=URL('static','images/pexels-lady.jpeg')}}">  -->
+    <!--Header-->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center page-header">
+          <h1>Welcome to Codetrain Notepad</h1>
+          <h5>Save your Note, Read it on the go</h5>
+        </div>
+      </div>
+    </div>
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-3">
+          </div>
+
+          <div class="col-md-6">
+            <form class="form-horizontal" action="{{=URL('authenticate')}}" method="post">  
+              <div class="form-group">
+                  
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" class="form-control" name="email" placeholder="Enter your emial address" size="30" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" name="password" placeholder="Enter your password" size="30" required>
+                </div>
+
+                <div class="form-group">
+                    <input type="checkbox" checked="">
+                    <label for="remember">Remember me</label>
+                    <input type="submit" value="Login">
+                </div>
+
+                <div class="form-group">
+                  <p class="text-muted">Don't have an account? <a href="{{=URL('default','register')}}"><b>Sign Up</b></a></p>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+</body>
+</html>

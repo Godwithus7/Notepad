@@ -1,0 +1,103 @@
+{{extend 'Notepadlayout.html'}}
+
+	  <!--Form-->
+	  	<div class="container">
+	    	<div class="row">
+
+		      	<div class="col-md-1">
+		      	</div>
+
+			    <div class="col-md-10">
+			        <form class="form" action="{{=URL('update')}}" method="post"> 
+			           <div class="form-group">
+			                <div class="row">
+			                    <div class="col-md-12">
+
+								
+									<!-- {{if readnotes:}}
+										{{for notes in readnotes:}}
+											<p><strong>{{=notes.id}}. <a href="#">{{=notes.db_title}}</a></strong> <br> <a href="#" style="color: green">https//www.{{=notes.db_title}}.com</a> </p>
+											
+											<p class="well read-more"> {{=notes.db_notes}}
+												<a href="#">...read more</a> | 
+												<a href="{{=URL('default','edit_notes/'+ str(notes.id))}}">edit</a> | 
+												<a href="{{=URL('default','delete/'+ str(notes.id))}}">delete</a>
+											</p> 
+
+											<hr>
+											
+												{{pass}}
+										{{else:}}
+											<h2>No Notes Found</h2>
+												{{pass}}
+								 -->
+			                    	
+									{{if readnotes:}}
+										{{for notes in readnotes:}}
+											<p><strong>{{=notes.id}}. <a href="#">{{=notes.db_title}}</a></strong> <br> <a href="#" style="color: green">https//www.{{=notes.db_title}}.com</a> </p>
+											
+											<p class="well"> {{=notes.db_notes}}
+												<a href="#">...read more</a> | 
+												<a href="{{=URL('default','edit_notes/'+ str(notes.id))}}">edit</a> | 
+												<a href="{{=URL('default','delete/'+ str(notes.id))}}">delete</a>
+											</p> 
+
+											<hr>
+											
+												{{pass}}
+										{{else:}}
+											<h2>No Notes Found</h2>
+												{{pass}}
+			                    </div>
+
+
+
+
+			                    <!--<nav style="text-align: center;">
+									<div>
+										<a href="Add_Notes.html">Click here to add new notes</a>
+									</div>
+
+									<ul class="pagination justify-content">
+										<li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
+										<li class="page-item active"><a href="#" class="page-link">1</a></li>
+										<li class="page-item"><a href="#" class="page-link">2</a></li>
+										<li class="page-item"><a href="#" class="page-link">3</a></li>
+										<li class="page-item"><a href="#" class="page-link">Next</a></li>
+									</ul>
+								</nav> -->
+			                 </div>
+			   			</div>
+			   		</form> 
+			  	</div>
+			    <div class="col-md-1">  
+			    </div>
+			</div>
+		</div>
+	 
+		<script src="{{=URL('static','js/jquery-3.1.1.min.js')}}"></script>
+		<script src= "{{=URL('static','js/bootstrap.js')}}"></script>
+		<script>
+		$(document).ready(function(){
+			var readMore =$(".read-more").html();
+			var lessText = readMore.substr(0,500);
+
+			if (readMore.length > 500){
+				$(".read-more").html(lessText).append("<a href='#' class='read-more-link'> ...Show More </a>")
+			}else{
+				$("read-more").html(readMore);
+			}
+
+			$("body").on("click", ".read-more-link", function(event){
+				event.preventDefault();
+				$(this).parent(".read-more").html(readMore).append("<a href='' class='show-less-link'> ...Show Less </a>")
+			})
+
+			$("body").on("click", ".show-less-link", function(event){
+				event.preventDefault();
+				$(this).parent(".read-more").html(readMore.substr(0,500)).append("<a href='' class='read-more-link'> ...Show More </a>")
+			})
+		});
+	</script>
+
+	
